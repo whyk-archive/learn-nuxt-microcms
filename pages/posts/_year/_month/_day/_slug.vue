@@ -20,10 +20,16 @@ interface Contents {
   slug: string
 }
 
+interface Params {
+  year?: string
+  month?: string
+  day?: string
+  slug?: string
+}
+
 interface Data {
   items: Contents[]
-  slug: string
-  params: string[]
+  params: Params
 }
 
 export default Vue.extend({
@@ -47,14 +53,58 @@ export default Vue.extend({
   data(): Data {
     return {
       items: [],
-      slug: '',
-      params: [],
+      params: {},
     }
   },
   head() {
     return {
       // @ts-ignore
       title: this.items[0].title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          // @ts-ignore
+          content: this.items[0].description,
+        },
+        { hid: 'og:type', name: 'og:type', content: 'article' },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          // @ts-ignore
+          content: `${this.items[0].title} - Learn Nuxt and microCMS`,
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          // @ts-ignore
+          content: this.items[0].description,
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          // @ts-ignore
+          content: `${this.items[0].title} - Learn Nuxt and microCMS`,
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          // @ts-ignore
+          content: this.items[0].description,
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          // @ts-ignore
+          content: `https://learn-nuxt-microcms.netlify.app/posts/${this.params.year}/${this.params.month}/${this.params.day}/${this.params.slug}`,
+        },
+        {
+          hid: 'og:site_name',
+          name: 'og:site_name',
+          // @ts-ignore
+          content: this.items[0].title,
+        },
+      ],
     }
   },
 })

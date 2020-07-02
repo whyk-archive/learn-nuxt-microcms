@@ -65,6 +65,55 @@ export default Vue.extend({
       return String(num).padStart(2, '0')
     },
   },
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          // @ts-ignore
+          content: 'これはNuxtJSとmicroCMSを合わせて使えるか確認するページです',
+        },
+        { hid: 'og:type', name: 'og:type', content: 'website' },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          // @ts-ignore
+          content: 'Learn Nuxt and microCMS',
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          // @ts-ignore
+          content: 'これはNuxtJSとmicroCMSを合わせて使えるか確認するページです',
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          // @ts-ignore
+          content: 'Learn Nuxt and microCMS',
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          // @ts-ignore
+          content: 'これはNuxtJSとmicroCMSを合わせて使えるか確認するページです',
+        },
+        {
+          hid: 'og:url',
+          name: 'og:url',
+          // @ts-ignore
+          content: 'https://learn-nuxt-microcms.netlify.app',
+        },
+        {
+          hid: 'og:site_name',
+          name: 'og:site_name',
+          // @ts-ignore
+          content: 'Learn Nuxt and microCMS',
+        },
+      ],
+    }
+  },
 })
 </script>
 
