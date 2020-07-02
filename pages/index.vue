@@ -5,13 +5,10 @@
       <dd>{{ item.description }}</dd>
       <dd>
         <nuxt-link
-          :to="`posts/${divergeDateUnit(
+          :to="`posts/${getDatetime(item.createdAt, 'year')}/${getDatetime(
             item.createdAt,
-            'year'
-          )}/${divergeDateUnit(item.createdAt, 'month')}/${divergeDateUnit(
-            item.createdAt,
-            'date'
-          )}/${item.slug}`"
+            'month'
+          )}/${getDatetime(item.createdAt, 'date')}/${item.slug}`"
         >
           posts/{{ item.slug }}へ移動
         </nuxt-link>
@@ -43,7 +40,7 @@ export default Vue.extend({
     }
   },
   methods: {
-    divergeDateUnit(datetime: string, unit: 'year' | 'month' | 'date') {
+    getDatetime(datetime: string, unit: 'year' | 'month' | 'date') {
       const { year, month, date } = this.getDateUnit(datetime)
 
       if (unit === 'year') return year
