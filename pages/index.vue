@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    {{ getDateUnit() }}
     <dl v-for="(item, index) in items" :key="index">
       <dt>{{ item.title }}</dt>
       <dd>{{ item.description }}</dd>
