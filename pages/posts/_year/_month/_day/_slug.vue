@@ -9,9 +9,26 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
+interface Contents {
+  id: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  title: string
+  description: string
+  slug: string
+}
+
+interface Data {
+  items: Contents[]
+  slug: string
+  params: string[]
+}
+
 export default Vue.extend({
   async asyncData({ params, $axios }) {
-    const { contents } = await $axios.$get(
+    const res = await $axios.$get(
       `https://whyk-test.microcms.io/api/v1/list?filters=slug[equals]${params.slug}`,
       {
         headers: {
@@ -19,17 +36,25 @@ export default Vue.extend({
         },
       }
     )
+    const contents: Contents[] = res.contents
+
     return {
       items: contents,
       slug: params.slug,
       params,
     }
   },
-  data() {
+  data(): Data {
     return {
       items: [],
       slug: '',
       params: [],
+    }
+  },
+  head() {
+    return {
+      // @ts-ignore
+      title: this.items[0].title,
     }
   },
 })
