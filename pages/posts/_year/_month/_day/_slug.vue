@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-for="(item, index) in items" :key="index">
-      <h2>{{ item.title }}</h2>
-      <p>{{ item.description }}</p>
+    <div>
+      <h2>{{ items[0].title }}</h2>
+      <p>{{ items[0].description }}</p>
     </div>
   </div>
 </template>
