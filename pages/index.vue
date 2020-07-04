@@ -117,7 +117,7 @@ export default Vue.extend({
 })
 </script>
 
-<style>
+<style lang="scss">
 .container {
   max-width: 1000px;
   width: 100%;
