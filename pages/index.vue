@@ -4,14 +4,9 @@
       <dt>{{ item.title }}</dt>
       <dd>{{ item.description }}</dd>
       <dd>
-        <nuxt-link
-          :to="`posts/${getDatetime(item.createdAt, 'year')}/${getDatetime(
-            item.createdAt,
-            'month'
-          )}/${getDatetime(item.createdAt, 'date')}/${item.slug}`"
+        <nuxt-link :to="`posts/${getDatetime(item.createdAt)}/${item.slug}`"
+          >posts/{{ item.slug }}へ移動</nuxt-link
         >
-          posts/{{ item.slug }}へ移動
-        </nuxt-link>
       </dd>
     </dl>
   </div>
@@ -40,12 +35,9 @@ export default Vue.extend({
     }
   },
   methods: {
-    getDatetime(datetime: string, unit: 'year' | 'month' | 'date') {
+    getDatetime(datetime: string) {
       const { year, month, date } = this.getDateUnit(datetime)
-
-      if (unit === 'year') return year
-      else if (unit === 'month') return this.zeroPadding(month)
-      else return this.zeroPadding(date)
+      return `${year}/${this.zeroPadding(month)}/${this.zeroPadding(date)}`
     },
     getDateUnit(date?: string) {
       const getDate = date ? new Date(date) : new Date()

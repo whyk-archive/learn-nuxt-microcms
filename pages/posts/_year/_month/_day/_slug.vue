@@ -46,7 +46,6 @@ export default Vue.extend({
 
     return {
       items: contents,
-      slug: params.slug,
       params,
     }
   },
