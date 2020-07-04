@@ -4,9 +4,9 @@
       <dt>{{ item.title }}</dt>
       <dd>{{ item.description }}</dd>
       <dd>
-        <nuxt-link :to="`posts/${getDatetime(item.createdAt)}/${item.slug}`"
-          >posts/{{ item.slug }}へ移動</nuxt-link
-        >
+        <nuxt-link :to="`posts/${getDatetime(item.createdAt)}/${item.slug}`">
+          posts/{{ item.slug }}へ移動
+        </nuxt-link>
       </dd>
     </dl>
   </div>
