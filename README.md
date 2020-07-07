@@ -1,4 +1,6 @@
 # learn-nuxt-microcms
+ここでは、Deploy Previewでもサイトが問題なくデプロイされるのかを試す。
+
 ## ここでやりたいこと
 - [x] microCMSデータの表示
 - [x] フォルダの動的ルーティング
